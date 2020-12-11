@@ -33,24 +33,32 @@ namespace Diary.Data
 			Excel.Application app = new Excel.Application();
 
 			Workbooks books = app.Workbooks;
-			var book = CreateWorkBook(books, DateTime.Now.Year);
+			DateTime date = DateTime.Now.AddYears(1);
+			var book = CreateWorkBook(books);
 
-			Worksheet sheet = book.Sheets.Add() as Worksheet;
-			CreateSheet_Date(sheet, "第一季度", DateTime.Now, DateTime.Now.AddMonths(3));
+			CreateSheet_Quarter(book, date.Year, 1);
+			CreateSheet_Quarter(book, date.Year, 2);
+			CreateSheet_Quarter(book, date.Year, 3);
+			CreateSheet_Quarter(book, date.Year, 4);
+
 			book.SaveAs(filename);
 			app.Quit();
 
 		}
 
-		public Workbook CreateWorkBook(Workbooks books, int year)
+		public Workbook CreateWorkBook(Workbooks books)
 		{
 			return books.Add();
 		}
-		public void CreateSheet_Quarter(Worksheet worksheet, string sheetName)
+		public void CreateSheet_Quarter(Workbook book, int year, int num)
 		{
-
+			Worksheet sheet = book.Sheets.Add() as Worksheet;
+			sheet.Name = $"第{num}季度";
+			DateTime start = DateTime.Parse($"{year}-01-01");
+			DateTime end = start.AddMonths(3 * num + 1).AddDays(-1);
+			CreateSheet_Date(sheet, start, end);
 		}
-		public void CreateSheet_Date(Worksheet worksheet, string sheetName, DateTime startDate, DateTime endDate)
+		public void CreateSheet_Date(Worksheet worksheet, DateTime startDate, DateTime endDate)
 		{
 			worksheet.get_Range(worksheet.Cells[1, 1], worksheet.Cells[1, 23]).MergeCells = true;//合并单元格
 			Random random = new Random();
@@ -62,24 +70,45 @@ namespace Diary.Data
 			head.Font.Name = "微软雅黑";
 			head.Font.Bold = true;
 			head.Font.FontStyle = "微软雅黑";
-
-			for (int i = 1; startDate <= endDate; i = i + 5, startDate = startDate.AddDays(1))
+			int dayOfWeek = (int)DayOfWeek.Sunday;
+			for (int i = 2; i < 23; i = i + 3, dayOfWeek++)
 			{
-				CreateSheet_Line(worksheet, startDate, endDate, i);
+				int weekRow = 2;
+				Range weekhead = worksheet.get_Range(worksheet.Cells[weekRow, i], worksheet.Cells[weekRow, i + 2]);
+				weekhead.MergeCells = true;
+				initHeadRange(weekhead);
+
+				worksheet.Cells[weekRow, i] = $"{Enum.Parse(typeof(DayOfWeek), dayOfWeek.ToString())}";
+
+			}
+			DateTime indexStartDate = startDate;
+			DateTime indexEndDate = startDate;
+
+			for (int row = 3; indexEndDate <= endDate;)
+			{
+				indexEndDate = indexEndDate.AddDays(1);
+				if (indexEndDate.DayOfWeek < DayOfWeek.Saturday)
+				{
+					continue;
+				}
+				CreateSheet_Line(worksheet, indexStartDate, indexEndDate, row);
+				indexStartDate = indexEndDate.AddDays(1);
+				row = row + 6;
 			}
 		}
 
 		/// <summary>
-		/// 
+		/// 在一行中显示的； 要保证同一个礼拜的在一行中
 		/// </summary>
 		/// <param name="worksheet"></param>
 		/// <param name="startDate"></param>
-		/// <param name="row">每5个人一组</param>
+		/// <param name="row">每6个人一组</param>
 		public void CreateSheet_Line(Worksheet worksheet, DateTime startDate, DateTime endDate, int row)
 		{
 			//Time  3 * 7 生活， 工作、学习
-			Range timerow = worksheet.get_Range(worksheet.Cells[row, 1], worksheet.Cells[row, 1]);
-			timerow.ColumnWidth = 16;
+			Range timerow = worksheet.get_Range(worksheet.Cells[row, 1], worksheet.Cells[row + 1, 1]);
+			timerow.ColumnWidth = 10;
+			timerow.Interior.ColorIndex = 35;
 
 			worksheet.Cells[row + 2, 1] = "9:00-12:00";
 			worksheet.Cells[row + 3, 1] = "12:00-18:00";
@@ -88,18 +117,21 @@ namespace Diary.Data
 			//Range timerange = worksheet.Rows[1];
 
 			//Range Ranger = worksheet.get_Range(mySheet.Cells[1, 1], mySheet.Cells[DT.Rows.Count + 2, DT.Columns.Count - 3]);
+			DateTime indextime = startDate;
 
-			for (int i = 2; startDate <= endDate; i = i + 3, startDate = startDate.AddDays(1))
+			int firtDayOfWeek = (int)startDate.DayOfWeek;
+			int i = 2 + firtDayOfWeek * 3;
+			for (; indextime <= endDate; i = i + 3, indextime = indextime.AddDays(1))
 			{
-				Range head = worksheet.get_Range(worksheet.Cells[1, i], worksheet.Cells[1, i + 2]);
+				Range head = worksheet.get_Range(worksheet.Cells[row, i], worksheet.Cells[row, i + 2]);
+				head.MergeCells = true;
 				initHeadRange(head);
 
-				worksheet.Cells[row, i] = $"{startDate.ToShortDateString()}\r\n{startDate.DayOfWeek}";
+				worksheet.Cells[row, i] = $"{indextime.ToShortDateString()}";
 
 				worksheet.Cells[row + 1, i] = "工作";
 				worksheet.Cells[row + 1, i + 1] = "生活";
 				worksheet.Cells[row + 1, i + 2] = "学习";
-				startDate = startDate.AddDays(1);
 			}
 
 			//worksheet.get_Range(worksheet.Cells[1, 1], worksheet.Cells[1, 7]).MergeCells = true;
@@ -110,7 +142,6 @@ namespace Diary.Data
 
 		public void initHeadRange(Range head)
 		{
-			head.MergeCells = true;
 			head.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 			head.Borders.Weight = Microsoft.Office.Interop.Excel.XlBorderWeight.xlThin;
 			head.RowHeight = 26;
