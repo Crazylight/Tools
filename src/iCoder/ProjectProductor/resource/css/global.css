@@ -1,0 +1,14 @@
+﻿body{ font-size:14px;}
+a{text-decoration: none; cursor: pointer; color:Black;}
+a:link{}a:hover{color:#08c;text-decoration:underline}
+iframe{ border-width:0px; display:block;}
+ol,ul{list-style: none; margin: 0px;}
+li{ height:30px; line-height:30px; text-align:center;}
+i {	font-style: normal;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,
+hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0px;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{ display:block}
+button,input,select,textarea{}
+input,select,textarea{}
+table{}th{text-align:inherit}.table-tr-color{background:#f0f0f0}
+.fn-clear:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}.fn-clear{zoom:1}

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0D834FB2-3856-4655-B995-624F3A417684}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjectProductor</RootNamespace>
+    <AssemblyName>ProjectProductor</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseProj.cs" />
+    <Compile Include="BLLProj.cs" />
+    <Compile Include="BLL\MainBLL.cs" />
+    <Compile Include="BLL\SysBLL.cs" />
+    <Compile Include="DALProj.cs" />
+    <Compile Include="DAL\MainDAL.cs" />
+    <Compile Include="DAL\SysDAL.cs" />
+    <Compile Include="EntityProj.cs" />
+    <Compile Include="ProjConfig.cs" />
+    <Compile Include="ProjFacade.cs" />
+    <Compile Include="ProjStart.cs" />
+    <Compile Include="WebPages\BasePage.cs" />
+    <Compile Include="WebPages\Default.cs" />
+    <Compile Include="WebPages\DesignerCS.cs" />
+    <Compile Include="WebPages\Desk.cs" />
+    <Compile Include="WebPages\Index.cs" />
+    <Compile Include="WebPages\LoginPage.cs" />
+    <Compile Include="WebPages\UserControl.cs" />
+    <Compile Include="WebProj.cs" />
+    <Compile Include="WizardProj.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WpfProj.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="resource\css\control_default.css" />
+    <Content Include="resource\css\list_default.css" />
+    <Content Include="resource\css\navcss.css" />
+    <Content Include="resource\foot.css" />
+    <Content Include="resource\frame.css" />
+    <Content Include="resource\css\global.css" />
+    <Content Include="resource\imgs\arrows.png" />
+    <Content Include="resource\imgs\login.jpg" />
+    <Content Include="resource\imgs\loginBtn.png" />
+    <Content Include="resource\imgs\loginIcon.png" />
+    <Content Include="resource\imgs\login_btn.png" />
+    <Content Include="resource\imgs\oap_login_bg.png" />
+    <Content Include="resource\imgs\oap_login_btn.png" />
+    <Content Include="resource\imgs\oap_login_password.png" />
+    <Content Include="resource\imgs\oap_login_user.png" />
+    <Content Include="resource\imgs\背景.png" />
+    <Content Include="resource\js\jquery.min.js" />
+    <Content Include="resource\js\listpage.js" />
+    <Content Include="resource\login.css" />
+    <Content Include="resource\css\style.css" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

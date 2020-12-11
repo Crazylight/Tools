@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diary", "Diary\Diary.csproj", "{94894924-2B14-4A11-B9CA-3C01270C6A67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crazylight.Common", "Crazylight.Common\Crazylight.Common.csproj", "{ED30F112-7771-41DA-AB34-52BC027FBF90}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94894924-2B14-4A11-B9CA-3C01270C6A67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94894924-2B14-4A11-B9CA-3C01270C6A67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94894924-2B14-4A11-B9CA-3C01270C6A67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94894924-2B14-4A11-B9CA-3C01270C6A67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED30F112-7771-41DA-AB34-52BC027FBF90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED30F112-7771-41DA-AB34-52BC027FBF90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED30F112-7771-41DA-AB34-52BC027FBF90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED30F112-7771-41DA-AB34-52BC027FBF90}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {059146EA-7864-4142-A2F9-D95054063576}
+	EndGlobalSection
+EndGlobal

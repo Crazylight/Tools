@@ -1,0 +1,142 @@
+﻿<Window x:Class="iCoder.Views.DbCreater"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Style="{StaticResource WindowStyle}" 
+        Title="DbCreater" Height="500" Width="800">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="Grid">
+                            <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}"/>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" Value="{DynamicResource DefaultedBorderBrush}" TargetName="Border"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="{DynamicResource MouseOverBrush}" TargetName="Border"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" Value="{DynamicResource PressedBrush}" TargetName="Border"/>
+                                <Setter Property="BorderBrush" Value="{DynamicResource PressedBorderBrush}" TargetName="Border"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
+                                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
+                                <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <!--<Rectangle Style="{StaticResource BGSecond}"></Rectangle>-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="0">
+                <Label Width="80" Height="32">sheet名称：</Label>
+                <TextBox x:Name="TbSheet" Width="80" Height="32">Sheet1</TextBox>
+                <Button Grid.Row="0" Content="读取" x:Name="BtnRead" Click="BtnRead_Click">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="20">
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0, 1" StartPoint="0, 0">
+                                        <GradientStop Color="White" Offset="0.0" />
+                                        <GradientStop Color="Silver" Offset="0.5" />
+                                        <GradientStop Color="White" Offset="0.0" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState x:Name="MouseOver">
+                                            <Storyboard>
+                                                <!--<ColorAnimation Duration="0" To="#FFB8B8B8"
+                                                            Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)"/>-->
+                                                <!--<ColorAnimation Duration="0" To="Red" Storyboard.TargetProperty="Background"/>-->
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Content="保存" x:Name="BtnSave" Click="BtnSave_Click">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="20">
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0, 1" StartPoint="0, 0">
+                                        <GradientStop Color="White" Offset="0.0" />
+                                        <GradientStop Color="Silver" Offset="0.5" />
+                                        <GradientStop Color="White" Offset="0.0" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState x:Name="MouseOver">
+                                            <Storyboard>
+                                                <!--<ColorAnimation Duration="0" To="#FFB8B8B8"
+                                                            Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)"/>-->
+                                                <!--<ColorAnimation Duration="0" To="Red" Storyboard.TargetProperty="Background"/>-->
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="BtnUpload" Width="150" Height="50" Content="选择文件并生成" Click="BtnUpload_Click">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="20">
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0, 1" StartPoint="0, 0">
+                                        <GradientStop Color="White" Offset="0.0" />
+                                        <GradientStop Color="Silver" Offset="0.5" />
+                                        <GradientStop Color="White" Offset="0.0" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState x:Name="MouseOver">
+                                            <Storyboard>
+                                                <!--<ColorAnimation Duration="0" To="#FFB8B8B8"
+                                                            Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)"/>-->
+                                                <!--<ColorAnimation Duration="0" To="Red" Storyboard.TargetProperty="Background"/>-->
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+                <Label x:Name="LblName"/>
+                <RichTextBox x:Name="RichTb" Height="350"/>
+                <DataGrid x:Name="DgV"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

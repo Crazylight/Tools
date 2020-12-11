@@ -1,0 +1,20 @@
+﻿table{ border-spacing:0px; font:13px/1.231 SimSun,verdana,arial,helvetica,clean,sans-serif;}
+.list_table{overflow: hidden; table-layout: fixed; border-radius:5px; width:100%;}
+.list_table tr{ height:23px; text-align:center; border-radius:2px;}
+.list_table tr:nth-child(odd){ background-color:#effdf0;}
+.list_table tr:hover{ background-color:#78F071; border-radius:5px;}
+.list_table tr td{ border-right:#DDD solid 1px;}
+.list_table th{line-height: 30px; height: 30px; font-size:14px; font-weight: bold; margin:0px;background-color: #CFF2D1; }
+.list_table th:hover{ color:#FFFFFF;background-color: #77E07D; border-radius:2px;}
+.list_table th .listTh{}
+.listTh span{ background: url("../../resource/imgs/arrow.png") right -60px no-repeat; padding-right:30px;}
+.list_table th .up{background-position: right -47px;}
+.list_table th .down{background-position: right -26px;}
+
+.footerPage{ text-align:right; margin:5px 30px; font-size:12px;}
+.footerPageRight{ float:right;}
+.pages a{padding: 4px 6px; border: solid 1px #ddd; background: #fff; text-decoration: none; margin-right: 3px; margin-left: 3px;}
+.pages a:visited{padding: 4px 6px; border: solid 1px #ddd; background: #fff; text-decoration: underline;}
+.pages .cpb{padding: 4px 6px; font-weight: bold; border: none;}
+.pages a:hover{color: #fff; background: #ffa501; border-color: #ffa501; text-decoration: none;}
+.hide{ display:none;}
