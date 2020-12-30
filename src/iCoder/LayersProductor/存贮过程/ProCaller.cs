@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using LangHelper;
 
 namespace LayersProductor
 {
@@ -10,13 +11,13 @@ namespace LayersProductor
     {
         protected DataTable _dt;
         protected string _projName, _entityName;
-        protected LangHelper.LanguageHelper _Lang;
+        protected LanguageHelper _Lang;
         static ProCaller instance;
         private ProCaller(DataTable dt)
         {
             _dt = dt;
 
-            _Lang = new LangHelper.LanguageHelper(LangHelper.eLanguageType.Chinese);
+            _Lang = new LanguageHelper(LangHelper.eLanguageType.Chinese);
         }
 
         public static ProCaller getInstance(DataTable dt)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 
-namespace LayersProductor
+namespace LayersProductor.SQLServer
 {
 	public class Facade
 	{

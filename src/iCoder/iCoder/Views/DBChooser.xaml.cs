@@ -14,6 +14,7 @@ using System.Data.SqlClient;
 using System.ComponentModel;
 using System.Xml;
 using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace iCoder.Views
 {
@@ -34,6 +35,10 @@ namespace iCoder.Views
 		{
 			try
 			{
+				if (true)
+				{
+
+				}
 				GetDtConn();
 			}
 			catch (Exception ex)
@@ -49,15 +54,10 @@ namespace iCoder.Views
 				this.TbUser.Text = "sa";
 				this.Pwd.Password = "taotao778899!";
 			}
-			else if (this.CmbServer.SelectedIndex == 3)
-			{
-				this.TbUser.Text = "INFO";
-				this.Pwd.Password = "infongw789!";
-			}
 			else if (this.CmbServer.SelectedIndex == 2)
 			{
-				this.TbUser.Text = "broker";
-				this.Pwd.Password = "sa%6try67rYHRh6";
+				this.TbUser.Text = "gmghk";
+				this.Pwd.Password = "G7gIVYB9Xk^7";
 			}
 			else if (this.CmbServer.SelectedIndex == 0)
 			{
@@ -81,7 +81,7 @@ namespace iCoder.Views
 			Constant.Constant.Pwd = Pwd.Password;
 
 			SqlConnectionStringBuilder sb = new SqlConnectionStringBuilder();
-			if (CmbIdentity.SelectedIndex < 0)
+			if (CmbDBType.SelectedIndex < 0)
 			{
 
 			}
@@ -99,16 +99,21 @@ namespace iCoder.Views
 				{
 					this.CmbDataBases.ItemsSource = null;
 					this.CmbDataBases.Items.Clear();
-					//this.CmbDataBases.DataContext = null;
-					//ICollectionView view = (ICollectionView)CollectionViewSource.GetDefaultView(CmbDataBases.ItemsSource);
-					//XmlElement element = (XmlElement)view.CurrentItem;
-					//XmlDocument doc = element.OwnerDocument;
-					//doc.RemoveAll();
 				}
-				SqlConnection conn = new SqlConnection(sb.ToString());
-				this.CmbDataBases.ItemsSource = DataOper.SqlHelper.GetDataBases(conn).DefaultView;
-				this.CmbDataBases.DisplayMemberPath = "name";
-				this.CmbDataBases.SelectedIndex = 0;
+				if (CmbDBType.SelectedIndex == 1)
+				{
+					SqlConnection conn = new SqlConnection(sb.ToString());
+					this.CmbDataBases.ItemsSource = DataOper.SqlHelper.GetDataBases(conn).DefaultView;
+					this.CmbDataBases.DisplayMemberPath = "name";
+					this.CmbDataBases.SelectedIndex = 0;
+				}
+				else
+				{
+					MySqlConnection conn = new MySqlConnection(sb.ToString());
+					this.CmbDataBases.ItemsSource = DataOper.MySqlHelper.GetDataBases(conn).DefaultView;
+					this.CmbDataBases.DisplayMemberPath = "Database";
+					this.CmbDataBases.SelectedIndex = 0;
+				}
 
 
 			}
@@ -131,7 +136,7 @@ namespace iCoder.Views
 				return;
 			}
 			Constant.Constant.DataBase = this.CmbDataBases.Text;
-			(new LaywersCreater() { WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen }).Show();
+			(new SqlServerLaywersCreater() { WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen }).Show();
 		}
 	}
 }

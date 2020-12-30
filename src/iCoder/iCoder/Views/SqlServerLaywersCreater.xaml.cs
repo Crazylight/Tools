@@ -17,6 +17,7 @@ using UIProductor;
 using UIProductor.Page;
 using System.Collections.ObjectModel;
 using System.IO;
+using LayersProductor.SQLServer;
 
 namespace iCoder.Views
 {
@@ -29,9 +30,9 @@ namespace iCoder.Views
     /// <summary>
     /// Interaction logic for LaywersCreater.xaml
     /// </summary>
-    public partial class LaywersCreater : Window
+    public partial class SqlServerLaywersCreater : Window
     {
-        public LaywersCreater()
+        public SqlServerLaywersCreater()
         {
             InitializeComponent();
             this.RBtnLay.Checked += new RoutedEventHandler(RBtnLay_Checked);

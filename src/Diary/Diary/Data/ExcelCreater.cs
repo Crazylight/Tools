@@ -35,11 +35,8 @@ namespace Diary.Data
 			Workbooks books = app.Workbooks;
 			DateTime date = DateTime.Now.AddYears(1);
 			var book = CreateWorkBook(books);
-
-			CreateSheet_Quarter(book, date.Year, 1);
-			CreateSheet_Quarter(book, date.Year, 2);
-			CreateSheet_Quarter(book, date.Year, 3);
-			CreateSheet_Quarter(book, date.Year, 4);
+			//CreateSheet_Year(book, date);
+			CreateSheet_Date(book.Sheets.Add() as Worksheet, DateTime.Now, DateTime.Now.AddDays(20));
 
 			book.SaveAs(filename);
 			app.Quit();
@@ -50,12 +47,20 @@ namespace Diary.Data
 		{
 			return books.Add();
 		}
+
+		public void CreateSheet_Year(Workbook book, DateTime date)
+		{
+			CreateSheet_Quarter(book, date.Year, 1);
+			CreateSheet_Quarter(book, date.Year, 2);
+			CreateSheet_Quarter(book, date.Year, 3);
+			CreateSheet_Quarter(book, date.Year, 4);
+		}
 		public void CreateSheet_Quarter(Workbook book, int year, int num)
 		{
 			Worksheet sheet = book.Sheets.Add() as Worksheet;
 			sheet.Name = $"第{num}季度";
 			DateTime start = DateTime.Parse($"{year}-01-01");
-			DateTime end = start.AddMonths(3 * num + 1).AddDays(-1);
+			DateTime end = start.AddMonths(3 * num + 1).AddDays(-2);
 			CreateSheet_Date(sheet, start, end);
 		}
 		public void CreateSheet_Date(Worksheet worksheet, DateTime startDate, DateTime endDate)
@@ -208,7 +213,7 @@ namespace Diary.Data
 			head.Font.Name = "微软雅黑";
 			head.Font.Bold = true;
 			head.Font.FontStyle = "微软雅黑";
-
+			//head.Cells.
 			InitRange(worksheet.get_Range(worksheet.Cells[2, 1], worksheet.Cells[2, 7]));
 
 			////worksheet.Cells.ColumnWidth = 168;

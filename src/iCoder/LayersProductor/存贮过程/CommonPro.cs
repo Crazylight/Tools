@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
+using LangHelper;
 
 namespace LayersProductor
 {
@@ -12,14 +13,14 @@ namespace LayersProductor
 		public static string ConnectionString;
 		protected DataTable _dt;
 		protected string _projName, _entityName;
-		protected LangHelper.LanguageHelper _Lang;
+		protected LanguageHelper _Lang;
 		public CommonPro(DataTable dt, string projName, string entityName)
 		{
 			_dt = dt;
 
 			_projName = projName;
 			_entityName = entityName;
-			_Lang = new LangHelper.LanguageHelper(LangHelper.eLanguageType.Chinese);
+			_Lang = new LanguageHelper(LangHelper.eLanguageType.Chinese);
 		}
 
 		protected string CreateHeadV2(string fileName)

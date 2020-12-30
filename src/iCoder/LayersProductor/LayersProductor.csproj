@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LayersProductor</RootNamespace>
     <AssemblyName>LayersProductor</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -40,23 +43,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BizBLL.cs" />
-    <Compile Include="BizDAL.cs" />
-    <Compile Include="SQLDALProForNiugu.cs" />
+    <Compile Include="MySql\MySqlProc.cs" />
+    <Compile Include="SQLServer\BizBLL.cs" />
+    <Compile Include="SQLServer\BizDAL.cs" />
+    <Compile Include="SQLServer\SQLDALProForNiugu.cs" />
     <Compile Include="存贮过程\BasePro.cs" />
     <Compile Include="存贮过程\ProCaller.cs" />
     <Compile Include="存贮过程\ProcCreater.cs" />
-    <Compile Include="SQLBLLPro.cs" />
+    <Compile Include="SQLServer\SQLBLLPro.cs" />
     <Compile Include="存贮过程\CommonPro.cs" />
-    <Compile Include="SQLDALPro.cs" />
-    <Compile Include="EntityPro.cs" />
-    <Compile Include="Facade.cs" />
+    <Compile Include="SQLServer\SQLDALPro.cs" />
+    <Compile Include="SQLServer\EntityPro.cs" />
+    <Compile Include="SQLServer\Facade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlParamsDAL.cs" />
+    <Compile Include="SQLServer\SqlParamsDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LangHelper\LangHelper.csproj">
-      <Project>{6AEF28E8-314E-497C-9E52-AC402946EFDF}</Project>
+      <Project>{6aef28e8-314e-497c-9e52-ac402946efdf}</Project>
       <Name>LangHelper</Name>
     </ProjectReference>
   </ItemGroup>
