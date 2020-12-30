@@ -68,7 +68,7 @@ namespace DataOper
 					}
 					catch (Exception e)
 					{
-						//ClearLog.Error("[对账清算文件]对单" + e.ToString());
+				Console.Write(e.ToString());
 						Thread.Sleep(1000 * 60 * 5);
 					}
 				}

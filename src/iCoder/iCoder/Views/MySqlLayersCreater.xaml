@@ -1,0 +1,39 @@
+﻿<Window x:Class="iCoder.Views.MySqlLayersCreater"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:iCoder.Views"
+        mc:Ignorable="d"
+        Title="MySqlLayersCreater" Height="450" Width="1000">
+	<DockPanel>
+		<TreeView x:Name="TvTables" Width="230" DockPanel.Dock="Left" >
+		</TreeView>
+		<StackPanel DockPanel.Dock="Right" MinWidth="800" Orientation="Vertical">
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  DockPanel.Dock="Top">
+				<RadioButton x:Name="RBtnMvc" Content="MVC" GroupName="ui" FontSize="20" Margin="20 0" IsChecked="True" RenderTransformOrigin="-1.167,0.741" />
+				<RadioButton x:Name="RBtnLay" Content="三层" GroupName="ui" FontSize="20" Margin="20 0" IsChecked="True" RenderTransformOrigin="-1.167,0.741" />
+			</StackPanel>
+			<StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top">
+				<Button x:Name="BtnCreate" Click="BtnCreate_Click" Width="100" Content="创建">
+				</Button>
+			</StackPanel>
+			<DockPanel Margin="10">
+				<StackPanel x:Name="StackPageType" HorizontalAlignment="Center" Visibility="Hidden" Orientation="Horizontal" DockPanel.Dock="Top">
+					<Label>页面类型</Label>
+					<RadioButton x:Name="RbtnListAndEdit" GroupName="UI" IsChecked="True" Content="List + Edit"/>
+					<RadioButton x:Name="RbtnListEditListBox" GroupName="UI" Content="ListEdit之ListBox"/>
+					<RadioButton x:Name="RbtnListEditRepeater" GroupName="UI" Content="ListEdit之repeater"/>
+				</StackPanel>
+				<TabControl x:Name="TcControls" Margin="5" DockPanel.Dock="Bottom"  ScrollViewer.VerticalScrollBarVisibility="Visible">
+					<TabItem Header="content" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="400" Width="400" >this
+                        
+                        
+                        
+                        
+                        is the content</TabItem>
+				</TabControl>
+			</DockPanel>
+		</StackPanel>
+	</DockPanel>
+</Window>

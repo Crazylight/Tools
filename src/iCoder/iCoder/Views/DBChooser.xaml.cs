@@ -136,7 +136,14 @@ namespace iCoder.Views
 				return;
 			}
 			Constant.Constant.DataBase = this.CmbDataBases.Text;
-			(new SqlServerLaywersCreater() { WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen }).Show();
+			if (CmbDBType.SelectedIndex == 1)
+			{
+				(new SqlServerLaywersCreater() { WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen }).Show();
+			}
+			else
+			{
+				(new MySqlLayersCreater() { WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen }).Show();
+			}
 		}
 	}
 }

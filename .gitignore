@@ -7,6 +7,8 @@ nupkg/
 
 # Visual Studio Code
 .vscode
+.vs/
+/packages
 
 # User-specific files
 *.suo
@@ -32,6 +34,4 @@ msbuild.err
 msbuild.wrn
 
 # Visual Studio 2015
-.vs/
 
-/packages

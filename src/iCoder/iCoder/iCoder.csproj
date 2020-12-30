@@ -156,6 +156,9 @@
     <Compile Include="Views\DbCreater.xaml.cs">
       <DependentUpon>DbCreater.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MySqlLayersCreater.xaml.cs">
+      <DependentUpon>MySqlLayersCreater.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SqlServerLaywersCreater.xaml.cs">
       <DependentUpon>SqlServerLaywersCreater.xaml</DependentUpon>
     </Compile>
@@ -190,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DbCreater.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MySqlLayersCreater.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

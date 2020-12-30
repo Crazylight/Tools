@@ -105,7 +105,7 @@ namespace iCoder.Views
             }
             catch (Exception e)
             {
-                //  MessageBox.Show(e.Message);
+				Console.Write(e.ToString());
             }
             #endregion
             return sb.ToString();
@@ -145,7 +145,7 @@ namespace iCoder.Views
             }
             catch (Exception ex)
             {
-                // MessageBox.Show(ex.Message);
+				Console.Write(ex.ToString());
             }
         }
 
@@ -170,7 +170,7 @@ namespace iCoder.Views
             }
             catch (Exception ex)
             {
-                // MessageBox.Show(ex.Message);
+				Console.Write(ex.ToString());
             }
         }
 
@@ -217,7 +217,7 @@ namespace iCoder.Views
             }
             catch (Exception e)
             {
-                //MessageBox.Show(e.Message);
+				Console.Write(e.ToString());
                 return null;
             }
             return sb.ToString();

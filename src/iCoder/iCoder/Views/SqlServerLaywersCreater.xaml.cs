@@ -71,7 +71,7 @@ namespace iCoder.Views
         private void DoInit()
         {
             SqlCommand comm = new SqlCommand();
-            comm.Connection = Constant.Constant.Conn;
+            comm.Connection = Constant.Constant.SqlConn;
 
             comm.CommandText = "select name from sys.tables ORDER BY NAME";
 
@@ -110,7 +110,7 @@ namespace iCoder.Views
         {
             DataTable dt = new DataTable();
             SqlCommand comm = new SqlCommand();
-            comm.Connection = Constant.Constant.Conn;
+            comm.Connection = Constant.Constant.SqlConn;
             comm.CommandText = "SELECT A.NAME NAME , B.NAME TYPE, is_identity,A.is_nullable,  A.MAX_LENGTH LENGTH FROM SYS.COLUMNS A, SYS.TYPES B WHERE A.SYSTEM_TYPE_ID = B.SYSTEM_TYPE_ID AND B.NAME != 'SYSNAME' AND A.OBJECT_ID = (SELECT OBJECT_ID FROM SYS.TABLES WHERE NAME = '" + tableName + "')  ORDER BY A.COLUMN_ID";
             using (SqlDataAdapter da = new SqlDataAdapter(comm))
             {

@@ -61,7 +61,7 @@ namespace DataOper
 			}
 			catch (Exception ex)
 			{
-				// System.Windows.Forms.MessageBox.Show(ex.Message);
+				Console.Write(ex.ToString());
 				_comm.Connection.Close();
 			}
 			return dt;
@@ -85,7 +85,7 @@ namespace DataOper
 			}
 			catch (Exception ex)
 			{
-				//  System.Windows.Forms.MessageBox.Show(ex.Message);
+				Console.Write(ex.ToString());
 				_comm.Connection.Close();
 			}
 			return dt;
@@ -109,13 +109,50 @@ namespace DataOper
 			}
 			catch (Exception ex)
 			{
-				//  System.Windows.Forms.MessageBox.Show(ex.Message);
+				Console.Write(ex.ToString());
 				_comm.Connection.Close();
 			}
 			finally
 			{
 				_comm.Dispose();
 			}
+			return dt;
+		}
+
+		public static DataTable GetDtNames(MySqlConnection conn)
+		{
+			MySqlCommand comm = new MySqlCommand();
+			comm.Connection = conn;
+
+			comm.CommandText = "show tables;";
+
+			using (MySqlDataAdapter da = new MySqlDataAdapter(comm))
+			{
+				DataTable dt = new DataTable();
+				da.Fill(dt);
+				return dt;
+			}
+		}
+
+		/// <summary>
+		/// Gets the dt.
+		/// </summary>
+		/// <returns></returns>
+		public static DataTable GetDtFields(MySqlConnection conn, string tableName)
+		{
+			DataTable dt = new DataTable();
+			MySqlCommand comm = new MySqlCommand();
+			comm.Connection = conn;
+
+			//# show columns /FIELDS from table_name from database_name; 或show columns from database_name.table_name; -- 显示表中列名称。 
+			comm.CommandText = $"show columns from {conn.Database}.{tableName}";
+			//select COLUMN_NAME, DATA_TYPE, COLUMN_COMMENT from information_schema.COLUMNS where table_name = 'us_orders' and table_schema = 'tjz_trade';
+			using (MySqlDataAdapter da = new MySqlDataAdapter(comm))
+			{
+				da.Fill(dt);
+			}
+			dt.TableName = tableName;
+
 			return dt;
 		}
 	}

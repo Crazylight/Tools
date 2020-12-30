@@ -60,7 +60,7 @@ namespace DataOper
 			}
 			catch (Exception ex)
 			{
-				// System.Windows.Forms.MessageBox.Show(ex.Message);
+				Console.Write(ex.ToString());
 				_comm.Connection.Close();
 			}
 			return dt;
@@ -84,7 +84,7 @@ namespace DataOper
 			}
 			catch (Exception ex)
 			{
-				//  System.Windows.Forms.MessageBox.Show(ex.Message);
+				Console.Write(ex.ToString());
 				_comm.Connection.Close();
 			}
 			return dt;
@@ -108,7 +108,7 @@ namespace DataOper
 			}
 			catch (Exception ex)
 			{
-				//  System.Windows.Forms.MessageBox.Show(ex.Message);
+				Console.Write(ex.ToString());
 				_comm.Connection.Close();
 			}
 			finally
