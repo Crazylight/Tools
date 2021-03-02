@@ -7,7 +7,7 @@ using LangHelper;
 
 namespace LayersProductor
 {
-    public class ProCaller : BasePro
+    public class ProCaller : TypeConvert
     {
         protected DataTable _dt;
         protected string _projName, _entityName;
@@ -124,7 +124,7 @@ namespace LayersProductor
             pro.Append("public void CallerAdd(");
             for (int i = 0; i < _dt.Rows.Count; i++)
             {
-				pro.Append(ConvertDoNetType(_dt.Rows[i]));
+				pro.Append(ConvertMsSqlToDoNetTypeNotNull(_dt.Rows[i]));
                 pro.Append(" ");
 
                 pro.Append(_dt.Rows[i]["name"].ToString());

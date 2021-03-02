@@ -43,11 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MySql\MySqlEntity.cs" />
     <Compile Include="MySql\MySqlProc.cs" />
     <Compile Include="SQLServer\BizBLL.cs" />
     <Compile Include="SQLServer\BizDAL.cs" />
     <Compile Include="SQLServer\SQLDALProForNiugu.cs" />
-    <Compile Include="存贮过程\BasePro.cs" />
+    <Compile Include="存贮过程\TypeConvert.cs" />
     <Compile Include="存贮过程\ProCaller.cs" />
     <Compile Include="存贮过程\ProcCreater.cs" />
     <Compile Include="SQLServer\SQLBLLPro.cs" />

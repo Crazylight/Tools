@@ -620,7 +620,7 @@ namespace LayersProductor.SQLServer
 					continue;
 				}
 				DataRow dr = _dt.Rows[i];
-				string type = ConvertDoNetType(dr);
+				string type = ConvertMsSqlToDoNetTypeNotNull(dr);
 				switch (type)
 				{
 					case "string":
@@ -685,7 +685,7 @@ namespace LayersProductor.SQLServer
 				update.Append("[" + _dt.Rows[i]["name"].ToString().ToUpper() + "] = ");
 
 				DataRow dr = _dt.Rows[i];
-				switch (ConvertDoNetType(dr))
+				switch (ConvertMsSqlToDoNetTypeNotNull(dr))
 				{
 					case "string":
 						update.Append("'\" + dol." + _dt.Rows[i]["name"].ToString() + "+ \"', ");

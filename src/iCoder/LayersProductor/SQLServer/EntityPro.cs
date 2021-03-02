@@ -62,7 +62,7 @@ namespace LayersProductor.SQLServer
 			sb.Append(_entityName + "Entity(");
 			foreach (DataRow dr in _dt.Rows)
 			{
-				sb.Append(ConvertDoNetType(dr) + " " + dr["name"].ToString().ToLower() + ", ");
+				sb.Append(ConvertMsSqlTypeDoNetType(dr) + " " + dr["name"].ToString().ToLower() + ", ");
 			}
 			sb.Remove(sb.Length - 2, 2);
 			sb.Append(" )\r\n");
@@ -84,7 +84,7 @@ namespace LayersProductor.SQLServer
 				sb.Append("\t\t\t/// <summary>\r\n");
 				sb.Append("\t\t\t///" + _Lang.GetValueByKey(dr["name"].ToString()) + "\r\n");
 				sb.Append("\t\t\t/// </summary>\r\n");
-				sb.Append("\t\t\tprivate " + ConvertDoNetType(dr) + " _" + dr["name"].ToString() + "Field;\r\n");
+				sb.Append("\t\t\tprivate " + ConvertMsSqlTypeDoNetType(dr) + " _" + dr["name"].ToString() + "Field;\r\n");
 			}
 			sb.Append("\t\t#endregion\r\n\r\n");
 			#endregion
@@ -98,7 +98,7 @@ namespace LayersProductor.SQLServer
 				sb.Append("\t\t\t///" + dr["name"].ToString() + "\r\n");
 				sb.Append("\t\t\t/// </summary>\r\n");
 				sb.Append("\t\t\t//[DataMember]\r\n");
-				sb.Append("\t\t\tpublic " + ConvertDoNetType(dr) + " " + dr["name"].ToString() + "\r\n");
+				sb.Append("\t\t\tpublic " + ConvertMsSqlTypeDoNetType(dr) + " " + dr["name"].ToString() + "\r\n");
 				sb.Append("\t\t\t{\r\n");
 				sb.Append("\t\t\t     get{ return " + " _" + dr["name"].ToString() + "Field;}\r\n");
 				sb.Append("\t\t\t     set\r\n");
@@ -155,7 +155,7 @@ namespace LayersProductor.SQLServer
 			sb.Append("\t\t#region Public Properties\r\n");
 			foreach (DataRow dr in _dt.Rows)
 			{
-				sb.Append("\t\tpublic " + ConvertDoNetType(dr) + " " + dr["name"].ToString() + " { get; set; }\r\n");
+				sb.Append("\t\tpublic " + ConvertMsSqlTypeDoNetType(dr) + " " + dr["name"].ToString() + " { get; set; }\r\n");
 			}
 			sb.Append("\t\t#endregion\r\n");
 			#endregion
@@ -245,7 +245,7 @@ namespace LayersProductor.SQLServer
 			foreach (DataRow dr in _dt.Rows)
 			{
 				sb.Append("\t\t[Column]\r\n");
-				sb.Append("\t\tpublic " + ConvertDoNetTypeNotNull(dr) + " " + dr["name"].ToString() + " { get; set; }\r\n");
+				sb.Append("\t\tpublic " + ConvertMsSqlToDoNetTypeNotNull(dr) + " " + dr["name"].ToString() + " { get; set; }\r\n");
 			}
 			#endregion
 			sb.Append("\t}");

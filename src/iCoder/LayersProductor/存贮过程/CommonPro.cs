@@ -8,7 +8,7 @@ using LangHelper;
 
 namespace LayersProductor
 {
-	public class CommonPro : BasePro
+	public class CommonPro : TypeConvert
 	{
 		public static string ConnectionString;
 		protected DataTable _dt;

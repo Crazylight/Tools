@@ -1,4 +1,5 @@
 ﻿using DataOper;
+using LayersProductor.MySql;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -128,35 +129,38 @@ namespace iCoder.Views
 				model.EntityName = node.Name;
 				model.Table = MySqlHelper.GetDtFields(Constant.Constant.MySqlConn, node.Name);
 
+
+				#region Entity
+				TabItem tabItemEntity = new TabItem() { Header="Entity"};
+				RichTextBox rtbEntity = new RichTextBox();
+				rtbEntity.Height = 450;
+				rtbEntity.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+				rtbEntity.VerticalAlignment = VerticalAlignment.Stretch;
+				rtbEntity.AppendText(MySqlEntity.CreatePublicEntity(model.Table));
+				tabItemEntity.Content = rtbEntity;
+				TcControls.Items.Add(tabItemEntity);
+
+
+				#endregion
+
 				#region Add
-				StringBuilder sb = new StringBuilder();
-				sb.Append($"create database {node.Name}( \r\n ");
 
-				for (int i = 0; i < model.Table.Rows.Count; i++)
-				{
-					if (i == model.Table.Rows.Count -1)
-					{
-						sb.Append($"IN p_in_{ model.Table.Rows[i][0].ToString()} { model.Table.Rows[i][1].ToString()} )");
-					}
-					else
-					{
-						//sb.Append($"IN p_in_{ model.Table.Rows[i][0].ToString()} { model.Table.Rows[i][1].ToString()},\r\n");
-						sb.Append($"IN p_in_{ model.Table.Rows[i][0].ToString()} { model.Table.Rows[i][1].ToString()},");
-					}
-				}
+				TabItem tabItemProc = new TabItem();
+				tabItemProc.Header = "存贮过程";
+				RichTextBox rtbProc = new RichTextBox();
+				rtbProc.Height = 450;
+				rtbProc.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+				rtbProc.VerticalAlignment = VerticalAlignment.Stretch;
 
-				TabItem tabItem = new TabItem();
-				tabItem.Header = "存贮过程";
-				RichTextBox richTextBox = new RichTextBox();
-				richTextBox.Height = 450;
-				richTextBox.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
-				richTextBox.VerticalAlignment = VerticalAlignment.Stretch;
-				richTextBox.AppendText(sb.ToString());
-				tabItem.Content = richTextBox;
+				rtbProc.AppendText(MySqlProc.CreateProc(model.Table));
+				tabItemProc.Content = rtbProc;
+				TcControls.Items.Add(tabItemProc);
 
-				TcControls.Items.Add(tabItem);
 				#endregion
+
+
 				#endregion
+
 				//CreateOneLayer(node, model);
 			}
 		}

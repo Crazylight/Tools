@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -47,6 +48,29 @@ namespace LayersProductor.MySql
 			sb.Append(")");
 
 			return sb.ToString();
+		}
+
+		public static string CreateProc(DataTable dt)
+		{
+			StringBuilder sbCreate = new StringBuilder();
+
+			for (int i = 0; i < dt.Rows.Count; i++)
+			{
+				string name = dt.Rows[i][0].ToString();
+				string type = dt.Rows[i][1].ToString();
+
+
+				if (i == dt.Rows.Count - 1)
+				{
+					sbCreate.Append($"IN p_in_{ dt.Rows[i][0].ToString()} { dt.Rows[i][1].ToString()} )");
+				}
+				else
+				{
+					//sb.Append($"IN p_in_{ model.Table.Rows[i][0].ToString()} { model.Table.Rows[i][1].ToString()},\r\n");
+					sbCreate.Append($"IN p_in_{dt.Rows[i][0].ToString()} { dt.Rows[i][1].ToString()},");
+				}
+			}
+			return sbCreate.ToString();
 		}
 	}
 }

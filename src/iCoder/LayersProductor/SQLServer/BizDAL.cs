@@ -168,7 +168,7 @@ namespace LayersProductor.SQLServer
 						continue;
 
 					#region 时间
-					if (ConvertDoNetType(_dt.Rows[i]) == "DateTime?")
+					if (ConvertMsSqlToDoNetTypeNotNull(_dt.Rows[i]) == "DateTime?")
 					{
 						sb.Append("            #region " + _dt.Rows[i]["name"].ToString().ToUpper() + "_start\r\n");
 						sb.Append("            if (!string.IsNullOrEmpty(");
@@ -199,7 +199,7 @@ namespace LayersProductor.SQLServer
 					//    sb.Append("\r\n            }\r\n");
 					//    sb.Append("            #endregion\r\n");
 					//}
-					else if (ConvertDoNetType(_dt.Rows[i]).Equals("string"))
+					else if (ConvertMsSqlToDoNetTypeNotNull(_dt.Rows[i]).Equals("string"))
 					{
 						sb.Append("            #region " + _dt.Rows[i]["name"].ToString().ToUpper() + "\r\n");
 						sb.Append("            if (!string.IsNullOrEmpty(");
@@ -642,7 +642,7 @@ namespace LayersProductor.SQLServer
 					continue;
 				}
 				DataRow dr = _dt.Rows[i];
-				switch (ConvertDoNetType(dr))
+				switch (ConvertMsSqlToDoNetTypeNotNull(dr))
 				{
 					case "string":
 					case "string?":
@@ -702,7 +702,7 @@ namespace LayersProductor.SQLServer
 				update.Append("[" + _dt.Rows[i]["name"].ToString().ToUpper() + "] = ");
 
 				DataRow dr = _dt.Rows[i];
-				switch (ConvertDoNetType(dr))
+				switch (ConvertMsSqlToDoNetTypeNotNull(dr))
 				{
 					case "string":
 						update.Append("'\" + dol." + _dt.Rows[i]["name"].ToString() + "+ \"', ");
