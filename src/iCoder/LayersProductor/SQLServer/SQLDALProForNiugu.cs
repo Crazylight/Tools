@@ -457,7 +457,7 @@ namespace LayersProductor.SQLServer
 				sb.Append("             else\r\n");
 				sb.Append("             {\r\n");
 				sb.Append("                dol." + dr["name"].ToString());
-				sb.Append(" = " + InitDOL(dr) + ";");
+				sb.Append(" = " + ShowConvertMsSqlToDolType(dr) + ";");
 				// sb.Append(" = dr[\"" + dr["name"] + "\"].ToString();");
 				sb.Append("\r\n             }\r\n");
 				sb.Append("            #endregion\r\n\r\n");

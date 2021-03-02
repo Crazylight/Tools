@@ -73,44 +73,6 @@ namespace LayersProductor
 			return head.ToString();
 		}
 
-		protected string InitDOL(DataRow dr)
-		{
-			switch (dr["type"].ToString())
-			{
-				case "tinyint":
-				case "smallint":
-				case "int":
-					return "Convert.ToInt32(dr[\"" + dr["name"] + "\"].ToString())";
-				case "float":
-					//  return "(float)dr[\"" + dr["name"] + "\"].ToString()";
-					return "Convert.ToDouble(dr[\"" + dr["name"] + "\"].ToString())";
-				case "money":
-				case "numberic":
-					return "Convert.ToDouble(dr[\"" + dr["name"] + "\"].ToString())";
-				case "char":
-				case "text":
-				case "ntext":
-				case "nchar":
-				case "nvarchar":
-				case "varchar":
-					return "dr[\"" + dr["name"] + "\"].ToString()";
-				case "date":
-				// return "Convert.ToDateTime(dr[\"" + dr["name"] + "\"]).ToShortDateString()";
-				// return "dr[\"" + dr["name"] + "\"].ToString()";
-				case "time":
-				// return "Convert.ToDateTime(dr[\"" + dr["name"] + ".ToString()\"]).ToShortTimeString()";
-				// return "dr[\"" + dr["name"] + "\"].ToString()";
-				case "datetime":
-				case "datetime2":
-				case "smalldatetime":
-					return "Convert.ToDateTime(dr[\"" + dr["name"] + "\"].ToString())";
-				case "decimal":
-					return "";////////////////////
-				default:
-					return
-						dr["name"].ToString();
-			}
-		}
 		protected bool IsContinue(string name)
 		{
 			if (name.ToLower().Equals("id") || name.ToLower().Equals("addtime")
