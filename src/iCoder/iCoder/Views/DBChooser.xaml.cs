@@ -59,6 +59,11 @@ namespace iCoder.Views
 				this.TbUser.Text = "gmghk";
 				this.Pwd.Password = "G7gIVYB9Xk^7";
 			}
+			else if (this.CmbServer.SelectedIndex == 3)
+			{
+				this.TbUser.Text = "hknzuser";
+				this.Pwd.Password = "H3sxH^CPvnlMh";
+			}
 			else if (this.CmbServer.SelectedIndex == 0)
 			{
 				if (this.TbUser != null)

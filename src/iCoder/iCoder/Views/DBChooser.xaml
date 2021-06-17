@@ -48,9 +48,10 @@
 		<ComboBox x:Name="CmbServer" Grid.Column="1" IsEditable="True"  IsSynchronizedWithCurrentItem="True"
                   SelectedIndex="0" Margin="10 0" HorizontalAlignment="Left"
                   SelectionChanged="CmbServer_SelectionChanged">
-			<ComboBoxItem Content="LDQ-PC\SQLEXPRESS"/>
+			<ComboBoxItem Content="选择服务器"/>
 			<ComboBoxItem Content="192.168.3.112"/>
 			<ComboBoxItem Content="mysql193.test.hk"/>
+			<ComboBoxItem Content="192.168.90.203"/>
 		</ComboBox>
 		<Label Content="身份验证:" Grid.Row="1" Style="{StaticResource LblStyle}"/>
 		<ComboBox x:Name="CmbDBType" Grid.Column="1" Grid.Row="1"  Margin="10 0" HorizontalAlignment="Left" IsEditable="True" SelectedIndex="2">
